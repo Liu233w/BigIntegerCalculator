@@ -6,7 +6,6 @@
 #include "state.h"
 #include <memory>
 #include <array>
-#include <QWhatsThis>
 
 using namespace std;
 

@@ -4,9 +4,6 @@
 #include "biginteger.h"
 #include "mainwindow.h"
 #include <functional>
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include <string>
 
 using namespace std;
 
@@ -27,14 +24,11 @@ enum class OperatorType
 
 class MainWindow;
 
-BigInteger toBigInteger(const string& s);
-string toString(const BigInteger& b);
-
 class State
 {
 protected:
     MainWindow *window;
-    static void enter_negative(MainWindow*);
+    void enter_negative();
 public:
     explicit State(MainWindow* _window)
         : window(_window) {}

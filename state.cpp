@@ -1,10 +1,15 @@
 #include "state.h"
 #include <sstream>
+#include <string>
+#include "ui_mainwindow.h"
 
 using namespace std;
 
 ostream& operator << (ostream& out, const BigInteger& a);
 istream& operator >> (istream& in, BigInteger& a);
+
+BigInteger toBigInteger(const string& s);
+string toString(const BigInteger& b);
 
 inline BigInteger toBigInteger(const string& s)
 {
@@ -21,7 +26,7 @@ inline string toString(const BigInteger& b)
     return sout.str();
 }
 
-inline void State::enter_negative(MainWindow *window)
+inline void State::enter_negative()
 {
     window->reset_this_output_text ("");
     window->ui->ThisOutput->insertPlainText (
@@ -121,7 +126,7 @@ void when_start::press_operation (OperatorType a)
     //如果不是输入负数就不执行操作
     if(a==OperatorType::Minus)
     {
-        enter_negative (window);
+        enter_negative ();
         window->state.reset (new enter_first_number(
                                  window));
     }
