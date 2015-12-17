@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>248</width>
-    <height>412</height>
+    <height>451</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;大数计算器&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;ver1.0&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;内核、算法：谷雨鸿&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;界面、交互：刘书敏&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;整型大数计算器&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;ver1.0&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;内核、算法：谷雨鸿&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;界面、交互：刘书敏&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -39,7 +39,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;快捷键说明：&lt;/p&gt;&lt;p&gt;0-9：输入数字&lt;/p&gt;&lt;p&gt;+-*/：输入运算符&lt;/p&gt;&lt;p&gt;ENTER：获得结果&lt;/p&gt;&lt;p&gt;R(RES)：上次的结果&lt;/p&gt;&lt;p&gt;F1-F4（SET)：保存输入窗口中的结果&lt;/p&gt;&lt;p&gt;F5-F8 (GET)：将保存的结果输入到窗口中&lt;/p&gt;&lt;p&gt;C：重设状态（保留res和Mn）&lt;/p&gt;&lt;p&gt;退格键(CE)：清除输入的值&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#ff0000;&quot;&gt;快捷键说明：&lt;/span&gt;&lt;/p&gt;&lt;p&gt;0-9：输入数字&lt;/p&gt;&lt;p&gt;+-*/：输入运算符&lt;/p&gt;&lt;p&gt;ENTER：获得结果&lt;/p&gt;&lt;p&gt;R(RES)：上次的结果&lt;/p&gt;&lt;p&gt;F1-F4（SET)：保存输入窗口中的结果&lt;/p&gt;&lt;p&gt;F5-F8 (GET)：将保存的结果输入到窗口中&lt;/p&gt;&lt;p&gt;C：重设状态（保留res和Mn）&lt;/p&gt;&lt;p&gt;退格键(CE)：清除输入的值&lt;/p&gt;&lt;p&gt;?：互动式说明&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#0055ff;&quot;&gt;将鼠标移至RES和GET上可查看保存的数据&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
