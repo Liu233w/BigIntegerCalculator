@@ -54,7 +54,7 @@ inline void State::press_equal ()
 inline void State::press_get (int n)
 {
        window->reset_this_output_text (
-                   toString(*window->saves[n]));
+                   window->saves[n]);
 }
 
 inline void State::press_operation (OperatorType a)
@@ -65,15 +65,13 @@ inline void State::press_operation (OperatorType a)
 inline void State::press_res ()
 {
        window->reset_this_output_text (
-                   toString(*window->res));
+                   *window->res);
 }
 
 inline void State::press_set (int n)
 {
-    window->saves[n].reset(
-                new BigInteger(toBigInteger (
-                                   window->ui->ThisOutput
-                                   ->toPlainText().toStdString())));
+    window->saves[n]=window->ui->
+            ThisOutput->toPlainText();
     QPushButton* button;
     switch(n)
     {

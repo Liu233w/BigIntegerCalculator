@@ -313,6 +313,9 @@
           <property name="toolTip">
            <string>这是什么？</string>
           </property>
+          <property name="whatsThis">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;单击此按钮之后再单击某控件即可显示其说明&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>?</string>
           </property>

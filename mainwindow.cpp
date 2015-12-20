@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->ButtonRes->setPalette(pe);
     this->setAttribute(Qt::WA_QuitOnClose,true);
     reset_last_output_text ("0");
-    reset_this_output_text ("0");
+    reset_this_output_text (QString("0"));
     setWindowFlags (windowFlags ()|
                     Qt::WindowContextHelpButtonHint);
 
@@ -40,9 +40,17 @@ void MainWindow::reset_text_broser_algnment()
     ui->LastOutput->setAlignment(Qt::AlignRight);
 }
 
+/*
 void MainWindow::reset_this_output_text(const string& s)
 {
     ui->ThisOutput->setText(s.c_str ());
+    ui->ThisOutput->setAlignment(Qt::AlignRight);
+}
+*/
+
+void MainWindow::reset_this_output_text(const QString& s)
+{
+    ui->ThisOutput->setText(s);
     ui->ThisOutput->setAlignment(Qt::AlignRight);
 }
 

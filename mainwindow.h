@@ -33,7 +33,8 @@ public:
     ~MainWindow();
 
     void reset_text_broser_algnment();
-    void reset_this_output_text(const string& s);
+    //void reset_this_output_text(const string& s);
+    void reset_this_output_text(const QString& s);
     void reset_last_output_text(const string& s);
 
 private slots:
@@ -100,10 +101,10 @@ private:
 
     unique_ptr<State> state;
 
-    array<unique_ptr<BigInteger>,SAVES_MAX> saves;
-    unique_ptr<BigInteger> res;
+    array<QString,SAVES_MAX> saves;
+    unique_ptr<QString> res;
 
-    unique_ptr<BigInteger> this_output;
+    //unique_ptr<BigInteger> this_output;
     unique_ptr<BigInteger> last_output;
 };
 
