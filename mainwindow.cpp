@@ -40,23 +40,15 @@ void MainWindow::reset_text_broser_algnment()
     ui->LastOutput->setAlignment(Qt::AlignRight);
 }
 
-/*
-void MainWindow::reset_this_output_text(const string& s)
-{
-    ui->ThisOutput->setText(s.c_str ());
-    ui->ThisOutput->setAlignment(Qt::AlignRight);
-}
-*/
-
 void MainWindow::reset_this_output_text(const QString& s)
 {
     ui->ThisOutput->setText(s);
     ui->ThisOutput->setAlignment(Qt::AlignRight);
 }
 
-void MainWindow::reset_last_output_text(const string& s)
+void MainWindow::reset_last_output_text(const QString& s)
 {
-    ui->LastOutput->setText(s.c_str ());
+    ui->LastOutput->setText(s);
     ui->LastOutput->setAlignment(Qt::AlignRight);
 }
 

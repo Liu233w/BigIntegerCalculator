@@ -16,6 +16,7 @@ class MainWindow;
 }
 
 class State;
+enum class OperatorType;
 
 class MainWindow : public QMainWindow
 {
@@ -35,7 +36,7 @@ public:
     void reset_text_broser_algnment();
     //void reset_this_output_text(const string& s);
     void reset_this_output_text(const QString& s);
-    void reset_last_output_text(const string& s);
+    void reset_last_output_text(const QString &s);
 
 private slots:
     void on_action_about_triggered();
@@ -106,6 +107,8 @@ private:
 
     //unique_ptr<BigInteger> this_output;
     unique_ptr<BigInteger> last_output;
+
+    OperatorType operation;
 };
 
 #endif // MAINWINDOW_H

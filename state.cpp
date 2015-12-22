@@ -59,7 +59,30 @@ inline void State::press_get (int n)
 
 inline void State::press_operation (OperatorType a)
 {
-    //enter
+    BigInteger *tem=new BigInteger(
+                toBigInteger (window->ui->ThisOutput->
+                              toPlainText ().toStdString ()));
+    window->last_output.reset (tem);
+    window->operation=a;
+    QString o = window->ui->ThisOutput->
+            toPlainText ();
+    switch(a)
+    {
+    case OperatorType::Plus:
+        o+='+';
+        break;
+    case OperatorType::Minus:
+        o+='-';
+        break;
+    case OperatorType::Times:
+        o+='*';
+        break;
+    case OperatorType::Divide:
+        o+='/';
+        break;
+    }
+    window->reset_last_output_text (o);
+    window->reset_this_output_text ("0");
 }
 
 inline void State::press_res ()
@@ -175,7 +198,8 @@ void enter_first_number::press_get (int n)
 
 void enter_first_number::press_operation (OperatorType a)
 {
-    //enter
+    State::press_operation (a);
+    window->state.reset (new last_start(window));
 }
 
 void enter_first_number::press_res ()
@@ -222,7 +246,8 @@ void enter_operator::press_get (int n)
 
 void enter_operator::press_operation (OperatorType a)
 {
-    //enter
+    State::press_operation (a);
+    window->state.reset (new last_start(window));
 }
 
 void enter_operator::press_res ()
