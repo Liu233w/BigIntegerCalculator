@@ -122,4 +122,20 @@ public:
     void press_CE () final;
 };
 
+class enter_equal
+        :public State
+{
+public:
+    explicit enter_equal(MainWindow* _window)
+        : State(_window) {}
+    void press_number (int n) final;
+    void press_operation (OperatorType a) final;
+    void press_set (int n) final;
+    void press_get (int n) final;
+    void press_res () final;
+    void press_equal () final;
+    void press_C () final;
+    void press_CE () final;
+};
+
 #endif // STATE_H

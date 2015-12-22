@@ -269,19 +269,18 @@ void enter_operator::press_CE ()
     window->state.reset (new when_start(window));
 }
 
-/************ 还未修改*****************/
-
 void last_start::press_number (int n)
 {
     window->reset_this_output_text ("");
 
     State::press_number(n);
-    window->state.reset(new enter_first_number(window));
+    window->state.reset(new enter_last_number(window));
 }
 
 void last_start::press_C ()
 {
     State::press_C();
+    window->state.reset(new when_start(window));
 }
 
 void last_start::press_equal ()
@@ -292,14 +291,31 @@ void last_start::press_equal ()
 void last_start::press_get (int n)
 {
     State::press_get (n);
-    window->state.reset (new enter_operator
+    window->state.reset (new enter_equal
                          (window));
 }
 
 void last_start::press_operation (OperatorType a)
 {
-    //enter
-    //if a is minus, get a negative
+    QString s=window->ui->LastOutput->toPlainText ();
+    s.remove (s.size ()-1,1);
+    switch(a)
+    {
+    case OperatorType::Plus:
+        s+='+';
+        break;
+    case OperatorType::Minus:
+        s+='-';
+        break;
+    case OperatorType::Times:
+        s+='*';
+        break;
+    case OperatorType::Divide:
+        s+='/';
+        break;
+    }
+    window->operation=a;
+    window->reset_last_output_text (s);
 }
 
 void last_start::press_res ()
@@ -308,7 +324,7 @@ void last_start::press_res ()
     if(window->res)
     {
         State::press_res ();
-        window->state.reset (new enter_operator(
+        window->state.reset (new enter_equal(
                                  window));
     }
 }
@@ -319,6 +335,142 @@ void last_start::press_set (int n)
 }
 
 void last_start::press_CE ()
+{
+    //无操作
+}
+
+/************ 还未修改*****************/
+
+void enter_last_number::press_number (int n)
+{
+//enter
+}
+
+void enter_last_number::press_C ()
+{
+    State::press_C();
+    window->state.reset(new when_start(window));
+}
+
+void enter_last_number::press_equal ()
+{
+    //不执行操作
+}
+
+void enter_last_number::press_get (int n)
+{
+    State::press_get (n);
+    window->state.reset (new enter_equal
+                         (window));
+}
+
+void enter_last_number::press_operation (OperatorType a)
+{
+    QString s=window->ui->LastOutput->toPlainText ();
+    s.remove (s.size ()-1,1);
+    switch(a)
+    {
+    case OperatorType::Plus:
+        s+='+';
+        break;
+    case OperatorType::Minus:
+        s+='-';
+        break;
+    case OperatorType::Times:
+        s+='*';
+        break;
+    case OperatorType::Divide:
+        s+='/';
+        break;
+    }
+    window->operation=a;
+    window->ui->LastOutput->setPlainText (s);
+}
+
+void enter_last_number::press_res ()
+{
+    //如果上次的计算结果不存在，则不进行任何操作
+    if(window->res)
+    {
+        State::press_res ();
+        window->state.reset (new enter_equal(
+                                 window));
+    }
+}
+
+void enter_last_number::press_set (int n)
+{
+    //无操作
+}
+
+void enter_last_number::press_CE ()
+{
+    //无操作
+}
+
+void enter_equal::press_number (int n)
+{
+//enter
+}
+
+void enter_equal::press_C ()
+{
+    State::press_C();
+    window->state.reset(new when_start(window));
+}
+
+void enter_equal::press_equal ()
+{
+    //不执行操作
+}
+
+void enter_equal::press_get (int n)
+{
+    State::press_get (n);
+    window->state.reset (new enter_equal
+                         (window));
+}
+
+void enter_equal::press_operation (OperatorType a)
+{
+    QString s=window->ui->LastOutput->toPlainText ();
+    s.remove (s.size ()-1,1);
+    switch(a)
+    {
+    case OperatorType::Plus:
+        s+='+';
+        break;
+    case OperatorType::Minus:
+        s+='-';
+        break;
+    case OperatorType::Times:
+        s+='*';
+        break;
+    case OperatorType::Divide:
+        s+='/';
+        break;
+    }
+    window->operation=a;
+    window->ui->LastOutput->setPlainText (s);
+}
+
+void enter_equal::press_res ()
+{
+    //如果上次的计算结果不存在，则不进行任何操作
+    if(window->res)
+    {
+        State::press_res ();
+        window->state.reset (new enter_equal(
+                                 window));
+    }
+}
+
+void enter_equal::press_set (int n)
+{
+    //无操作
+}
+
+void enter_equal::press_CE ()
 {
     //无操作
 }

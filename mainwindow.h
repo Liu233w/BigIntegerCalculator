@@ -28,6 +28,8 @@ class MainWindow : public QMainWindow
     friend class enter_last_number;
     friend class enter_operator;
     friend class last_start;
+    friend class enter_last_number;
+    friend class enter_equal;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
