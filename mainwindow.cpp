@@ -2,6 +2,16 @@
 #include "ui_mainwindow.h"
 #include <QWhatsThis>
 
+inline void custButton(QPushButton* pushButton,QString str)
+{
+    QPixmap mypixmap;   mypixmap.load(str);
+    pushButton->setIcon(mypixmap);
+    pushButton->setIconSize(QSize(pushButton->width (),pushButton->height ()));
+    pushButton->setFlat (true);
+}
+
+//按钮透明样式表：background-color:rgba(255,255,255,0);
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -21,6 +31,24 @@ MainWindow::MainWindow(QWidget *parent) :
     reset_this_output_text (QString("0"));
     setWindowFlags (windowFlags ()|
                     Qt::WindowContextHelpButtonHint);
+
+    //加载按钮资源
+    custButton (ui->Button0,":/new/prefix1/material/0.png");
+    custButton (ui->Button1,":/new/prefix1/material/1.png");
+    custButton (ui->Button2,":/new/prefix1/material/2.png");
+    custButton (ui->Button3,":/new/prefix1/material/3.png");
+    custButton (ui->Button4,":/new/prefix1/material/4.png");
+    custButton (ui->Button5,":/new/prefix1/material/5.png");
+    custButton (ui->Button6,":/new/prefix1/material/6.png");
+    custButton (ui->Button7,":/new/prefix1/material/7.png");
+    custButton (ui->Button8,":/new/prefix1/material/8.png");
+    custButton (ui->Button9,":/new/prefix1/material/9.png");
+    custButton (ui->ButtonCE,":/new/prefix1/material/CE.png");
+    custButton (ui->ButtonDivide,":/new/prefix1/material/divide.png");
+    custButton (ui->ButtonPlus,":/new/prefix1/material/add.png");
+    custButton (ui->ButtonMinus,":/new/prefix1/material/minus.png");
+    custButton (ui->ButtonEqual,":/new/prefix1/material/equal.png");
+    custButton (ui->ButtonTimes,":/new/prefix1/material/times.png");
 
     //初始化状态机
     state.reset(new when_start(this));

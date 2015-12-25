@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>346</width>
+    <width>370</width>
     <height>351</height>
    </rect>
   </property>
@@ -32,8 +32,24 @@
    <iconset resource="material.qrc">
     <normaloff>:/new/prefix1/material/logo.png</normaloff>:/new/prefix1/material/logo.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">border-image: url(:/new/prefix1/material/back.jpg);</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0" colspan="2">
+     <widget class="QTextBrowser" name="LastOutput">
+      <property name="font">
+       <font>
+        <family>Adobe 黑体 Std R</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="whatsThis">
+       <string>上个数字</string>
+      </property>
+     </widget>
+    </item>
     <item row="1" column="0" colspan="2">
      <widget class="QTextBrowser" name="ThisOutput">
       <property name="font">
@@ -46,6 +62,19 @@
        <string>输入显示</string>
       </property>
      </widget>
+    </item>
+    <item row="2" column="1">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item row="3" column="0" colspan="2">
      <layout class="QHBoxLayout" name="horizontalLayout">
@@ -342,12 +371,12 @@
          <widget class="QPushButton" name="ButtonPlus">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
           <property name="text">
-           <string>+</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>+</string>
@@ -358,12 +387,15 @@
          <widget class="QPushButton" name="Button6">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>&amp;6</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>6</string>
@@ -374,15 +406,15 @@
          <widget class="QPushButton" name="ButtonEqual">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
           <property name="whatsThis">
            <string>(回车键)计算</string>
           </property>
           <property name="text">
-           <string>=</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>Enter</string>
@@ -393,12 +425,15 @@
          <widget class="QPushButton" name="Button8">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>&amp;8</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>8</string>
@@ -409,12 +444,12 @@
          <widget class="QPushButton" name="ButtonDivide">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
           <property name="text">
-           <string>/</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>/</string>
@@ -425,12 +460,12 @@
          <widget class="QPushButton" name="ButtonTimes">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
           <property name="text">
-           <string>*</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>*</string>
@@ -441,12 +476,15 @@
          <widget class="QPushButton" name="Button4">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>&amp;4</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>4</string>
@@ -457,12 +495,12 @@
          <widget class="QPushButton" name="Button0">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
           <property name="text">
-           <string>&amp;0</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>0</string>
@@ -473,12 +511,12 @@
          <widget class="QPushButton" name="Button3">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
           <property name="text">
-           <string>&amp;3</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>3</string>
@@ -489,12 +527,12 @@
          <widget class="QPushButton" name="Button1">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
           <property name="text">
-           <string>&amp;1</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>1</string>
@@ -505,12 +543,12 @@
          <widget class="QPushButton" name="Button2">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
           <property name="text">
-           <string>&amp;2</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>2</string>
@@ -521,12 +559,12 @@
          <widget class="QPushButton" name="Button5">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
           <property name="text">
-           <string>&amp;5</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>5</string>
@@ -537,12 +575,15 @@
          <widget class="QPushButton" name="Button7">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>&amp;7</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>7</string>
@@ -553,12 +594,15 @@
          <widget class="QPushButton" name="ButtonMinus">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>-</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>-</string>
@@ -569,12 +613,15 @@
          <widget class="QPushButton" name="Button9">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>&amp;9</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>9</string>
@@ -585,8 +632,8 @@
          <widget class="QPushButton" name="ButtonCE">
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>20</height>
+            <width>40</width>
+            <height>50</height>
            </size>
           </property>
           <property name="font">
@@ -598,8 +645,11 @@
           <property name="whatsThis">
            <string>(退格键)清除当前输入</string>
           </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>C&amp;E</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>Backspace</string>
@@ -610,28 +660,14 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="0" colspan="2">
-     <widget class="QTextBrowser" name="LastOutput">
-      <property name="font">
-       <font>
-        <family>Adobe 黑体 Std R</family>
-        <pointsize>20</pointsize>
-       </font>
-      </property>
-      <property name="whatsThis">
-       <string>上个数字</string>
-      </property>
-     </widget>
-    </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>346</width>
+     <width>370</width>
      <height>23</height>
     </rect>
    </property>

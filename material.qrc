@@ -1,5 +1,26 @@
 <RCC>
     <qresource prefix="/new/prefix1">
         <file>material/logo.png</file>
+        <file>material/0.png</file>
+        <file>material/1.png</file>
+        <file>material/2.png</file>
+        <file>material/3.png</file>
+        <file>material/4.png</file>
+        <file>material/5.png</file>
+        <file>material/6.png</file>
+        <file>material/7.png</file>
+        <file>material/8.png</file>
+        <file>material/add.png</file>
+        <file>material/c.png</file>
+        <file>material/CE.png</file>
+        <file>material/divide.png</file>
+        <file>material/equal.png</file>
+        <file>material/input.png</file>
+        <file>material/minus.png</file>
+        <file>material/set.png</file>
+        <file>material/times.png</file>
+        <file>material/get.png</file>
+        <file>material/9.png</file>
+        <file>material/back.jpg</file>
     </qresource>
 </RCC>
