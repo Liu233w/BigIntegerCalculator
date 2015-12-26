@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>370</width>
-    <height>351</height>
+    <width>404</width>
+    <height>397</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -30,10 +30,13 @@
   </property>
   <property name="windowIcon">
    <iconset resource="material.qrc">
-    <normaloff>:/new/prefix1/material/logo.png</normaloff>:/new/prefix1/material/logo.png</iconset>
+    <normaloff>:/other/material/logo.png</normaloff>:/other/material/logo.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">border-image: url(:/new/prefix1/material/back.jpg);</string>
+   <string notr="true">MainWindow
+{
+border-image: url(:/other/material/back.jpg);
+}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QFormLayout" name="formLayout">
@@ -48,6 +51,9 @@
       <property name="whatsThis">
        <string>上个数字</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/other/material/input.png);</string>
+      </property>
      </widget>
     </item>
     <item row="1" column="0" colspan="2">
@@ -55,28 +61,24 @@
       <property name="font">
        <font>
         <family>Adobe 黑体 Std R</family>
-        <pointsize>20</pointsize>
+        <pointsize>30</pointsize>
        </font>
       </property>
       <property name="whatsThis">
        <string>输入显示</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
      </widget>
     </item>
-    <item row="2" column="1">
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="3" column="0" colspan="2">
+    <item row="2" column="0" colspan="2">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -91,17 +93,23 @@
           <property name="enabled">
            <bool>false</bool>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>20</height>
+            <width>40</width>
+            <height>30</height>
            </size>
           </property>
           <property name="whatsThis">
            <string>(F8)将保存的结果输出到输入框中</string>
           </property>
           <property name="text">
-           <string>GET</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>F8</string>
@@ -113,17 +121,23 @@
           <property name="enabled">
            <bool>false</bool>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>20</height>
+            <width>40</width>
+            <height>30</height>
            </size>
           </property>
           <property name="whatsThis">
            <string>(F6)将保存的结果输出到输入框中</string>
           </property>
           <property name="text">
-           <string>GET</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>F6</string>
@@ -135,17 +149,23 @@
           <property name="enabled">
            <bool>false</bool>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>20</height>
+            <width>40</width>
+            <height>30</height>
            </size>
           </property>
           <property name="whatsThis">
            <string>(F5)将保存的结果输出到输入框中</string>
           </property>
           <property name="text">
-           <string>GET</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>F5</string>
@@ -154,17 +174,23 @@
         </item>
         <item row="1" column="1">
          <widget class="QPushButton" name="Set2">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>20</height>
+            <width>40</width>
+            <height>30</height>
            </size>
           </property>
           <property name="whatsThis">
            <string>(F2)保存输入框中的数字</string>
           </property>
           <property name="text">
-           <string>SET</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>F2</string>
@@ -173,17 +199,23 @@
         </item>
         <item row="3" column="1">
          <widget class="QPushButton" name="Set4">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>20</height>
+            <width>40</width>
+            <height>30</height>
            </size>
           </property>
           <property name="whatsThis">
            <string>(F4)保存输入框中的数字</string>
           </property>
           <property name="text">
-           <string>SET</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>F4</string>
@@ -192,17 +224,23 @@
         </item>
         <item row="2" column="1">
          <widget class="QPushButton" name="Set3">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>20</height>
+            <width>40</width>
+            <height>30</height>
            </size>
           </property>
           <property name="whatsThis">
            <string>(F3)保存输入框中的数字</string>
           </property>
           <property name="text">
-           <string>SET</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>F3</string>
@@ -214,17 +252,23 @@
           <property name="enabled">
            <bool>false</bool>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>20</height>
+            <width>40</width>
+            <height>30</height>
            </size>
           </property>
           <property name="whatsThis">
            <string>(F7)将保存的结果输出到输入框中</string>
           </property>
           <property name="text">
-           <string>GET</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>F7</string>
@@ -240,17 +284,23 @@
         </item>
         <item row="0" column="1">
          <widget class="QPushButton" name="Set1">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>20</height>
+            <width>40</width>
+            <height>30</height>
            </size>
           </property>
           <property name="whatsThis">
            <string>(F1)保存输入框中的数字</string>
           </property>
           <property name="text">
-           <string>SET</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>F1</string>
@@ -273,17 +323,23 @@
         </item>
         <item row="4" column="2">
          <widget class="QPushButton" name="ButtonRes">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>20</height>
+            <width>40</width>
+            <height>30</height>
            </size>
           </property>
           <property name="whatsThis">
            <string>(R)输出上次的运算结果</string>
           </property>
           <property name="text">
-           <string>&amp;RES</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>R</string>
@@ -299,10 +355,16 @@
         </item>
         <item row="4" column="1">
          <widget class="QPushButton" name="ButtonC">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>20</height>
+            <width>40</width>
+            <height>30</height>
            </size>
           </property>
           <property name="font">
@@ -318,7 +380,7 @@
            <string>(C)清除显示框，重置状态</string>
           </property>
           <property name="text">
-           <string>&amp;C</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string>C</string>
@@ -369,10 +431,16 @@
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="3">
          <widget class="QPushButton" name="ButtonPlus">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="text">
@@ -385,10 +453,16 @@
         </item>
         <item row="1" column="2">
          <widget class="QPushButton" name="Button6">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -404,10 +478,16 @@
         </item>
         <item row="3" column="2">
          <widget class="QPushButton" name="ButtonEqual">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="whatsThis">
@@ -423,10 +503,16 @@
         </item>
         <item row="0" column="1">
          <widget class="QPushButton" name="Button8">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -442,10 +528,16 @@
         </item>
         <item row="3" column="3">
          <widget class="QPushButton" name="ButtonDivide">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="text">
@@ -458,10 +550,16 @@
         </item>
         <item row="2" column="3">
          <widget class="QPushButton" name="ButtonTimes">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="text">
@@ -474,10 +572,16 @@
         </item>
         <item row="1" column="0">
          <widget class="QPushButton" name="Button4">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -493,10 +597,16 @@
         </item>
         <item row="3" column="1">
          <widget class="QPushButton" name="Button0">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="text">
@@ -509,10 +619,16 @@
         </item>
         <item row="2" column="2">
          <widget class="QPushButton" name="Button3">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="text">
@@ -525,10 +641,16 @@
         </item>
         <item row="2" column="0">
          <widget class="QPushButton" name="Button1">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="text">
@@ -541,10 +663,16 @@
         </item>
         <item row="2" column="1">
          <widget class="QPushButton" name="Button2">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="text">
@@ -557,10 +685,16 @@
         </item>
         <item row="1" column="1">
          <widget class="QPushButton" name="Button5">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="text">
@@ -573,10 +707,16 @@
         </item>
         <item row="0" column="0">
          <widget class="QPushButton" name="Button7">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -592,10 +732,16 @@
         </item>
         <item row="1" column="3">
          <widget class="QPushButton" name="ButtonMinus">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -611,10 +757,16 @@
         </item>
         <item row="0" column="2">
          <widget class="QPushButton" name="Button9">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -630,10 +782,16 @@
         </item>
         <item row="3" column="0">
          <widget class="QPushButton" name="ButtonCE">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
           <property name="font">
@@ -667,7 +825,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>370</width>
+     <width>404</width>
      <height>23</height>
     </rect>
    </property>

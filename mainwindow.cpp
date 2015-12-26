@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QWhatsThis>
+#include <QGraphicsDropShadowEffect>
+#include <QScrollBar>
 
 inline void custButton(QPushButton* pushButton,QString str)
 {
@@ -8,6 +10,75 @@ inline void custButton(QPushButton* pushButton,QString str)
     pushButton->setIcon(mypixmap);
     pushButton->setIconSize(QSize(pushButton->width (),pushButton->height ()));
     pushButton->setFlat (true);
+}
+
+inline void styleButton(QPushButton* pushButton,QString str)
+{
+    static const QString back_name="_pressed";
+    static const QString ext_name=".png";
+
+    pushButton->setStyleSheet ("QPushButton:!pressed{"
+                               "border-image: url(:/button/material/"
+                               +str+ext_name+");}"
+                               "QPushButton:pressed{"
+                               "border-image: url(:/button/material/"
+                               +str+back_name+ext_name+");}");
+}
+
+inline void setScrollbar(QTextBrowser *it)
+{
+    it->verticalScrollBar()->setStyleSheet("QScrollBar:vertical"
+                                                       "{"
+                                                       "width:8px;"
+                                                       "background:rgba(0,0,0,0%);"
+                                                       "margin:0px,0px,0px,0px;"
+                                                       "padding-top:9px;"
+                                                       "padding-bottom:9px;"
+                                                       "}"
+                                                       "QScrollBar::handle:vertical"
+                                                       "{"
+                                                       "width:8px;"
+                                                       "background:rgba(0,0,0,25%);"
+                                                       " border-radius:4px;"
+                                                       "min-height:20;"
+                                                       "}"
+                                                       "QScrollBar::handle:vertical:hover"
+                                                       "{"
+                                                       "width:8px;"
+                                                       "background:rgba(0,0,0,50%);"
+                                                       " border-radius:4px;"
+                                                       "min-height:20;"
+                                                       "}"
+                                                       "QScrollBar::add-line:vertical"
+                                                       "{"
+                                                       "height:9px;width:8px;"
+                                                       "border-image:url(:/images/a/3.png);"
+                                                       "subcontrol-position:bottom;"
+                                                       "}"
+                                                       "QScrollBar::sub-line:vertical"
+                                                       "{"
+                                                       "height:9px;width:8px;"
+                                                       "border-image:url(:/images/a/1.png);"
+                                                       "subcontrol-position:top;"
+                                                       "}"
+                                                       "QScrollBar::add-line:vertical:hover"
+                                                       "{"
+                                                       "height:9px;width:8px;"
+                                                       "border-image:url(:/images/a/4.png);"
+                                                       "subcontrol-position:bottom;"
+                                                       "}"
+                                                       "QScrollBar::sub-line:vertical:hover"
+                                                       "{"
+                                                       "height:9px;width:8px;"
+                                                       "border-image:url(:/images/a/2.png);"
+                                                       "subcontrol-position:top;"
+                                                       "}"
+                                                       "QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical"
+                                                       "{"
+                                                       "background:rgba(0,0,0,10%);"
+                                                       "border-radius:4px;"
+                                                       "}"
+                                                       );
 }
 
 //按钮透明样式表：background-color:rgba(255,255,255,0);
@@ -21,17 +92,53 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //生成并绘制主窗体
     ui->setupUi(this);
+    /*
     QPalette pe;
     pe.setColor(QPalette::ButtonText,Qt::red);
     ui->ButtonC->setPalette(pe);
     pe.setColor(QPalette::ButtonText,Qt::darkGreen);
     ui->ButtonRes->setPalette(pe);
+    */
     this->setAttribute(Qt::WA_QuitOnClose,true);
+    QGraphicsDropShadowEffect *shadow_effect =
+            new QGraphicsDropShadowEffect(this);
+    shadow_effect->setOffset(-5, 5);
+    shadow_effect->setColor(Qt::darkGray);
+    shadow_effect->setBlurRadius(8);
+    ui->ThisOutput->setGraphicsEffect(shadow_effect);
+    setScrollbar (ui->ThisOutput);
     reset_last_output_text ("0");
-    reset_this_output_text (QString("0"));
-    setWindowFlags (windowFlags ()|
-                    Qt::WindowContextHelpButtonHint);
+    reset_this_output_text ("0");
 
+    //加载按钮资源，使用代码加载减小工程量
+    styleButton (ui->Button0,"0");
+    styleButton (ui->Button1,"1");
+    styleButton (ui->Button2,"2");
+    styleButton (ui->Button3,"3");
+    styleButton (ui->Button4,"4");
+    styleButton (ui->Button5,"5");
+    styleButton (ui->Button6,"6");
+    styleButton (ui->Button7,"7");
+    styleButton (ui->Button8,"8");
+    styleButton (ui->Button9,"9");
+    styleButton (ui->ButtonCE,"CE");
+    styleButton (ui->ButtonDivide,"divide");
+    styleButton (ui->ButtonPlus,"add");
+    styleButton (ui->ButtonMinus,"minus");
+    styleButton (ui->ButtonEqual,"equal");
+    styleButton (ui->ButtonTimes,"times");
+    styleButton (ui->Get1,"get");
+    styleButton (ui->Get2,"get");
+    styleButton (ui->Get3,"get");
+    styleButton (ui->Get4,"get");
+    styleButton (ui->Set1,"set");
+    styleButton (ui->Set2,"set");
+    styleButton (ui->Set3,"set");
+    styleButton (ui->Set4,"set");
+    styleButton(ui->ButtonC,"c");
+    styleButton (ui->ButtonRes,"res");
+
+/*
     //加载按钮资源
     custButton (ui->Button0,":/new/prefix1/material/0.png");
     custButton (ui->Button1,":/new/prefix1/material/1.png");
@@ -49,7 +156,7 @@ MainWindow::MainWindow(QWidget *parent) :
     custButton (ui->ButtonMinus,":/new/prefix1/material/minus.png");
     custButton (ui->ButtonEqual,":/new/prefix1/material/equal.png");
     custButton (ui->ButtonTimes,":/new/prefix1/material/times.png");
-
+*/
     //初始化状态机
     state.reset(new when_start(this));
 }
