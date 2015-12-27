@@ -8,9 +8,7 @@ using namespace std;
 ostream& operator << (ostream& out, const BigInteger& a);
 istream& operator >> (istream& in, BigInteger& a);
 
-BigInteger toBigInteger(const string& s);
-string toString(const BigInteger& b);
-
+//进行大数类和字符串之间的相互转换，连接大数类和窗体的接口
 inline BigInteger toBigInteger(const string& s)
 {
     istringstream stin(s);
@@ -26,6 +24,8 @@ inline string toString(const BigInteger& b)
     return sout.str();
 }
 
+//基类的方法提供了每个派生类共同的操作（不是每个派生类都会调用）
+//由各个派生类负责具体的状态切换
 inline void State::enter_negative()
 {
     window->reset_this_output_text ("");
@@ -82,7 +82,9 @@ inline void State::press_operation (OperatorType a)
         break;
     }
     window->reset_last_output_text (o);
-    window->reset_this_output_text ("0");
+    //因为在输入第二个运算数之前有改变此运算符的功能，
+    //所以第二个运算数不能默认为0
+    window->reset_this_output_text ("");
 }
 
 inline void State::press_res ()
@@ -111,7 +113,12 @@ inline void State::press_set (int n)
         button=window->ui->Get4;
         break;
     }
-    button->setEnabled(true);
+    if(!button->isEnabled ())
+    {
+        button->setEnabled(true);
+        void styleButton(QPushButton* pushButton,QString str);
+        styleButton (button,"get");
+    }
     button->setToolTip (
                 window->ui->ThisOutput
                 ->toPlainText());
@@ -144,12 +151,18 @@ void when_start::press_get (int n)
 
 void when_start::press_operation (OperatorType a)
 {
-    //如果不是输入负数就不执行操作
+    //如果输入负数执行
     if(a==OperatorType::Minus)
     {
         enter_negative ();
         window->state.reset (new enter_first_number(
                                  window));
+    }
+    //否则第一个运算数是0
+    else
+    {
+        State::press_operation (a);
+        window->state.reset (new last_start(window));
     }
 }
 
@@ -285,7 +298,7 @@ void last_start::press_C ()
 
 void last_start::press_equal ()
 {
-    //不执行操作
+    //enter
 }
 
 void last_start::press_get (int n)
@@ -295,27 +308,32 @@ void last_start::press_get (int n)
                          (window));
 }
 
+//还未输入第二个运算数时按下别的运算符可以改变上次输入的运算符
 void last_start::press_operation (OperatorType a)
 {
-    QString s=window->ui->LastOutput->toPlainText ();
-    s.remove (s.size ()-1,1);
-    switch(a)
+    //如果按下的运算符和之前的运算符相同，不执行操作
+    if(window->operation!=a)
     {
-    case OperatorType::Plus:
-        s+='+';
-        break;
-    case OperatorType::Minus:
-        s+='-';
-        break;
-    case OperatorType::Times:
-        s+='*';
-        break;
-    case OperatorType::Divide:
-        s+='/';
-        break;
+        QString s=window->ui->LastOutput->toPlainText ();
+        s.remove (s.size ()-1,1);
+        switch(a)
+        {
+        case OperatorType::Plus:
+            s+='+';
+            break;
+        case OperatorType::Minus:
+            s+='-';
+            break;
+        case OperatorType::Times:
+            s+='*';
+            break;
+        case OperatorType::Divide:
+            s+='/';
+            break;
+        }
+        window->operation=a;
+        window->reset_last_output_text (s);
     }
-    window->operation=a;
-    window->reset_last_output_text (s);
 }
 
 void last_start::press_res ()
@@ -343,7 +361,7 @@ void last_start::press_CE ()
 
 void enter_last_number::press_number (int n)
 {
-//enter
+    State::press_number (n);
 }
 
 void enter_last_number::press_C ()

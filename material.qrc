@@ -31,5 +31,24 @@
         <file>material/minus.png</file>
         <file>material/set.png</file>
         <file>material/times.png</file>
+        <file>material/get_disabled.png</file>
+        <file>material/res_disabled.png</file>
+        <file>material/0_pressed.png</file>
+        <file>material/1_pressed.png</file>
+        <file>material/2_pressed.png</file>
+        <file>material/3_pressed.png</file>
+        <file>material/4_pressed.png</file>
+        <file>material/5_pressed.png</file>
+        <file>material/6_pressed.png</file>
+        <file>material/7_pressed.png</file>
+        <file>material/8_pressed.png</file>
+        <file>material/9_pressed.png</file>
+        <file>material/c_pressed.png</file>
+        <file>material/divide_pressed.png</file>
+        <file>material/equal_pressed.png</file>
+        <file>material/get_pressed.png</file>
+        <file>material/res_pressed.png</file>
+        <file>material/set_pressed.png</file>
+        <file>material/times_pressed.png</file>
     </qresource>
 </RCC>
