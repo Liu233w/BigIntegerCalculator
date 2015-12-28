@@ -13,11 +13,22 @@
   <property name="windowTitle">
    <string>关于</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">About_dialog
+{
+border-image: url(:/other/material/back.jpg);
+}</string>
+  </property>
   <layout class="QFormLayout" name="formLayout">
    <item row="1" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>黑体</family>
+        </font>
+       </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;整型大数计算器&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;ver1.0&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;框架、交互：刘书敏&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;内核：谷雨鸿&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;美工：王也凡&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -38,6 +49,11 @@
      </item>
      <item>
       <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <family>黑体</family>
+        </font>
+       </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#ff0000;&quot;&gt;快捷键说明：&lt;/span&gt;&lt;/p&gt;&lt;p&gt;0-9：输入数字&lt;/p&gt;&lt;p&gt;+-*/：输入运算符&lt;/p&gt;&lt;p&gt;ENTER：获得结果&lt;/p&gt;&lt;p&gt;R(RES)：上次的结果&lt;/p&gt;&lt;p&gt;F1-F4（SET)：保存输入窗口中的结果&lt;/p&gt;&lt;p&gt;F5-F8 (GET)：将保存的结果输入到窗口中&lt;/p&gt;&lt;p&gt;C：重设状态（保留res和Mn）&lt;/p&gt;&lt;p&gt;退格键(CE)：清除输入的值&lt;/p&gt;&lt;p&gt;?：互动式说明&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#0055ff;&quot;&gt;将鼠标移至RES和GET上可查看保存的数据&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>

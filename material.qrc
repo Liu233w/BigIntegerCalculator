@@ -10,6 +10,7 @@
         <file>material/scrollbar/addpage.png</file>
         <file>material/scrollbar/subpage.png</file>
         <file>material/scrollbar/tiao.png</file>
+        <file>material/back.png</file>
     </qresource>
     <qresource prefix="/button">
         <file>material/0.png</file>
@@ -50,5 +51,12 @@
         <file>material/res_pressed.png</file>
         <file>material/set_pressed.png</file>
         <file>material/times_pressed.png</file>
+        <file>material/add_pressed.png</file>
+        <file>material/CE_pressed.png</file>
+        <file>material/minus_pressed.png</file>
+        <file>material/res.png</file>
+        <file>material/Set_disabled.png</file>
+        <file>material/question mark.png</file>
+        <file>material/question mark_pressed.png</file>
     </qresource>
 </RCC>

@@ -4,6 +4,16 @@
 #include <QGraphicsDropShadowEffect>
 #include <QScrollBar>
 
+inline void setShadow(QWidget *it)
+{
+    QGraphicsDropShadowEffect *shadow_effect =
+            new QGraphicsDropShadowEffect(it);
+    shadow_effect->setOffset(5, 5);
+    shadow_effect->setColor(Qt::darkGray);
+    shadow_effect->setBlurRadius(8);
+    it->setGraphicsEffect(shadow_effect);
+}
+
 inline void custButton(QPushButton* pushButton,QString str)
 {
     QPixmap mypixmap;   mypixmap.load(str);
@@ -23,16 +33,8 @@ inline void styleButton(QPushButton* pushButton,QString str)
                                "QPushButton:pressed{"
                                "border-image: url(:/button/material/"
                                +str+back_name+ext_name+");}");
-}
 
-inline void setShadow(QWidget *it)
-{
-    QGraphicsDropShadowEffect *shadow_effect =
-            new QGraphicsDropShadowEffect(it);
-    shadow_effect->setOffset(5, 5);
-    shadow_effect->setColor(Qt::darkGray);
-    shadow_effect->setBlurRadius(8);
-    it->setGraphicsEffect(shadow_effect);
+    setShadow (pushButton);
 }
 
 inline void setBroser(QTextBrowser *it)
@@ -109,6 +111,15 @@ MainWindow::MainWindow(QWidget *parent) :
     setBroser (ui->LastOutput);
     reset_last_output_text ("0");
     reset_this_output_text ("0");
+    setShadow (ui->label);
+    setShadow (ui->label_2);
+    setShadow (ui->label_3);
+    setShadow (ui->label_4);
+    setShadow (ui->Get1);
+    setShadow (ui->Get2);
+    setShadow (ui->Get3);
+    setShadow (ui->Get4);
+    setShadow (ui->ButtonRes);
 
     //加载按钮资源，使用代码加载减小工程量
     styleButton (ui->Button0,"0");
@@ -127,16 +138,12 @@ MainWindow::MainWindow(QWidget *parent) :
     styleButton (ui->ButtonMinus,"minus");
     styleButton (ui->ButtonEqual,"equal");
     styleButton (ui->ButtonTimes,"times");
-    //styleButton (ui->Get1,"get");
-    //styleButton (ui->Get2,"get");
-    //styleButton (ui->Get3,"get");
-    //styleButton (ui->Get4,"get");
     styleButton (ui->Set1,"set");
     styleButton (ui->Set2,"set");
     styleButton (ui->Set3,"set");
     styleButton (ui->Set4,"set");
     styleButton(ui->ButtonC,"c");
-    //styleButton (ui->ButtonRes,"res");
+    styleButton (ui->ButtonWhatsThis,"question mark");
 
     //初始化状态机
     state.reset(new when_start(this));

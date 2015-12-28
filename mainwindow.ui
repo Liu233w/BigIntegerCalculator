@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>404</width>
-    <height>397</height>
+    <width>326</width>
+    <height>373</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,7 +21,7 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>16777215</width>
+    <width>550</width>
     <height>550</height>
    </size>
   </property>
@@ -35,7 +35,7 @@
   <property name="styleSheet">
    <string notr="true">MainWindow
 {
-border-image: url(:/other/material/back.jpg);
+border-image: url(:/other/material/back.png);
 }</string>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -295,6 +295,12 @@ border-image: url(:/other/material/back.jpg);
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <family>黑体</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>M4</string>
           </property>
@@ -327,6 +333,12 @@ border-image: url(:/other/material/back.jpg);
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <family>黑体</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>M2</string>
           </property>
@@ -334,6 +346,12 @@ border-image: url(:/other/material/back.jpg);
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <family>黑体</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>M3</string>
           </property>
@@ -372,6 +390,12 @@ border-image: url(:/other/material/back.jpg);
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label">
+          <property name="font">
+           <font>
+            <family>黑体</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>M1</string>
           </property>
@@ -432,7 +456,7 @@ border-image: url(:/other/material/back.jpg);
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;单击此按钮之后再单击某控件即可显示其说明&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
-           <string>?</string>
+           <string/>
           </property>
          </widget>
         </item>
@@ -849,7 +873,7 @@ border-image: url(:/other/material/back.jpg);
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>404</width>
+     <width>326</width>
      <height>23</height>
     </rect>
    </property>
