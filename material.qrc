@@ -7,10 +7,6 @@
         <file>material/scrollbar/2.png</file>
         <file>material/scrollbar/3.png</file>
         <file>material/scrollbar/4.png</file>
-        <file>material/scrollbar/addpage.png</file>
-        <file>material/scrollbar/subpage.png</file>
-        <file>material/scrollbar/tiao.png</file>
-        <file>material/back.png</file>
     </qresource>
     <qresource prefix="/button">
         <file>material/0.png</file>

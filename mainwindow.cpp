@@ -3,7 +3,10 @@
 #include <QWhatsThis>
 #include <QGraphicsDropShadowEffect>
 #include <QScrollBar>
+#include <string>
+#include <QGraphicsOpacityEffect>
 
+//给组件增加阴影效果，提高立体感
 inline void setShadow(QWidget *it)
 {
     QGraphicsDropShadowEffect *shadow_effect =
@@ -14,14 +17,7 @@ inline void setShadow(QWidget *it)
     it->setGraphicsEffect(shadow_effect);
 }
 
-inline void custButton(QPushButton* pushButton,QString str)
-{
-    QPixmap mypixmap;   mypixmap.load(str);
-    pushButton->setIcon(mypixmap);
-    pushButton->setIconSize(QSize(pushButton->width (),pushButton->height ()));
-    pushButton->setFlat (true);
-}
-
+//设置按钮效果
 inline void styleButton(QPushButton* pushButton,QString str)
 {
     static const QString back_name="_pressed";
@@ -37,14 +33,23 @@ inline void styleButton(QPushButton* pushButton,QString str)
     setShadow (pushButton);
 }
 
+//设置输入框效果，包括浅色的阴影（搭配输入框背景图片的透明效果）
+//和自制的窄滚动条
+//输入框的背景图片在mainwindow.ui中加入
 inline void setBroser(QTextBrowser *it)
 {
-    setShadow (it);
+    QGraphicsDropShadowEffect *shadow_effect =
+            new QGraphicsDropShadowEffect(it);
+    shadow_effect->setOffset(5, 5);
+    shadow_effect->setColor(QColor(0xa0,0xa0,0xa4,128));
+    shadow_effect->setBlurRadius(8);
+    it->setGraphicsEffect(shadow_effect);
+
     it->verticalScrollBar()->setStyleSheet(
                 "QScrollBar:vertical"
                 "{"
                 "width:8px;"
-                "background:rgba(0,0,0,0%);"
+                "background-color: rgba(255, 255, 255, 0);"
                 "margin:0px,0px,0px,0px;"
                 "padding-top:9px;"
                 "padding-bottom:9px;"
@@ -95,8 +100,7 @@ inline void setBroser(QTextBrowser *it)
                 );
 }
 
-//按钮透明样式表：background-color:rgba(255,255,255,0);
-
+//构造函数
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -149,6 +153,7 @@ MainWindow::MainWindow(QWidget *parent) :
     state.reset(new when_start(this));
 }
 
+//析构函数
 MainWindow::~MainWindow()
 {
     //使用了unique_ptr，不需手动释放资源
@@ -157,23 +162,43 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::reset_text_broser_algnment()
-{
-    ui->ThisOutput->setAlignment(Qt::AlignRight);
-    ui->LastOutput->setAlignment(Qt::AlignRight);
-}
-
+//重设输入框的显示（下同）
+//在改变文字之后必须要右对齐，使用函数减小工程量
 void MainWindow::reset_this_output_text(const QString& s)
 {
-    ui->ThisOutput->setText(s);
+    ui->ThisOutput->setPlainText(s);
     ui->ThisOutput->setAlignment(Qt::AlignRight);
 }
 
 void MainWindow::reset_last_output_text(const QString& s)
 {
-    ui->LastOutput->setText(s);
+    ui->LastOutput->setPlainText(s);
     ui->LastOutput->setAlignment(Qt::AlignRight);
 }
+
+//获取主输入框中显示的数字的大数类的指针
+//使用智能指针以避免内存泄露
+unique_ptr<BigInteger> MainWindow::getNum()
+{
+    return toBigInteger (ui->ThisOutput->
+                         toPlainText ().toStdString ());
+}
+
+//用以设置res按钮的函数（res按钮保存上次的计算结果）
+//使用函数以减少代码重复
+void MainWindow::setRes(const BigInteger * n)
+{
+    QString *s_res=new QString(toString(*n).c_str ());
+    if(!res)
+    {
+        ui->ButtonRes->setEnabled (true);
+        styleButton (ui->ButtonRes,"res");
+    }
+    ui->ButtonRes->setToolTip (*s_res);
+    this->res.reset (s_res);
+}
+
+//以下为槽函数，在按下按钮时调用。将使用State的派生类对象方法来具体实现交互
 
 void MainWindow::on_action_about_triggered()
 {
@@ -315,6 +340,7 @@ void MainWindow::on_ButtonCE_clicked()
     state->press_CE ();
 }
 
+//进入what's this模式，以显示帮助
 void MainWindow::on_ButtonWhatsThis_clicked()
 {
     QWhatsThis::enterWhatsThisMode ();

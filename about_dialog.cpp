@@ -2,6 +2,8 @@
 #include "ui_about_dialog.h"
 #include <QGraphicsDropShadowEffect>
 
+//本类的各个函数功能与mainwindow大致相同，可参阅其函数介绍
+
 inline void setShadow(QWidget *it)
 {
     QGraphicsDropShadowEffect *shadow_effect =

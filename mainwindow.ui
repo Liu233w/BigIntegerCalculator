@@ -35,8 +35,9 @@
   <property name="styleSheet">
    <string notr="true">MainWindow
 {
-border-image: url(:/other/material/back.png);
-}</string>
+border-image: url(:/other/material/back.jpg);
+}
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QFormLayout" name="formLayout">
