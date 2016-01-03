@@ -240,43 +240,34 @@ BigInteger operator-=(BigInteger& a, const BigInteger& b)
 
             a.vec.push_back(0);
 
-<<<<<<< HEAD
             return a;
+        }
+        else if (i == 0 && a.vec[0] > b.vec[0])
+        {
+            mint = b.vec.size();
+
+            maxt = a.vec.size();
+
+            temp.vec = b.vec;
+
+            judge = false;
+        }
+        else if (i == 0 && a.vec[0] < b.vec[0])
+        {
+            mint = a.vec.size();
+
+            maxt = b.vec.size();
+
+            temp.vec = a.vec;
+
+            a.vec = b.vec;
+
+            judge = true;
         }
     }
     else
     {
         mint = a.vec.size();
-=======
-			return a;
-		}
-		else if (i == 0 && a.vec[0] > b.vec[0])
-		{
-			mint = b.vec.size();
-
-			maxt = a.vec.size();
-
-			temp.vec = b.vec;
-
-			judge = false;
-		}
-		else if (i == 0 && a.vec[0] < b.vec[0])
-		{
-			mint = a.vec.size();
-
-			maxt = b.vec.size();
-
-			temp.vec = a.vec;
-
-			a.vec = b.vec;
-
-			judge = true;
-		}
-	}
-	else
-	{
-		mint = a.vec.size();
->>>>>>> refs/heads/pr/2
 
         maxt = b.vec.size();
 
@@ -475,19 +466,10 @@ BigInteger operator / (const BigInteger& a, const BigInteger& b)
         return (BigInteger)1;
     }
 
-<<<<<<< HEAD
     if (b.vec.size() == 1 && b.vec[0] == 0)
     {
-        BigInteger err("error");
-
-        return err;
+        throw logic_error("error");
     }
-=======
-	if (b.vec.size() == 1 && b.vec[0] == 0)
-	{
-		throw logic_error("error");
-	}
->>>>>>> refs/heads/pr/2
 
     i = a.vec.size() - b.vec.size();
 
@@ -533,7 +515,6 @@ BigInteger operator / (const BigInteger& a, const BigInteger& b)
 
 int SizeJudge(const BigInteger a, const BigInteger b)
 {
-<<<<<<< HEAD
     int alen, blen, i;
     alen = a.vec.size();
     blen = b.vec.size();
@@ -561,32 +542,3 @@ int SizeJudge(const BigInteger a, const BigInteger b)
     else
         return -1;
 }
-=======
-	int alen, blen, i;
-	alen = a.vec.size();
-	blen = b.vec.size();
-
-	if (alen>blen)
-	{
-		return 1;
-	}
-	else if (alen == blen)
-	{
-		for (i = alen - 1; i >= 0; i--)
-		{
-			if (a.vec[i]>b.vec[i])
-			{
-				return 1;
-			}
-			else if (a.vec[i]<b.vec[i])
-			{
-				return -1;
-			}
-		}
-		if (i == 0)
-			return 0;
-	}
-	else
-		return -1;
-}
->>>>>>> refs/heads/pr/2
