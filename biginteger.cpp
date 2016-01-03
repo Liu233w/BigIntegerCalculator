@@ -242,6 +242,28 @@ BigInteger operator-=(BigInteger& a, const BigInteger& b)
 
 			return a;
 		}
+		else if (i == 0 && a.vec[0] > b.vec[0])
+		{
+			mint = b.vec.size();
+
+			maxt = a.vec.size();
+
+			temp.vec = b.vec;
+
+			judge = false;
+		}
+		else if (i == 0 && a.vec[0] < b.vec[0])
+		{
+			mint = a.vec.size();
+
+			maxt = b.vec.size();
+
+			temp.vec = a.vec;
+
+			a.vec = b.vec;
+
+			judge = true;
+		}
 	}
 	else
 	{
