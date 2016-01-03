@@ -6,6 +6,7 @@
 #include <functional>
 #include <memory>
 #include <sstream>
+#include <stdexcept>
 
 using namespace std;
 

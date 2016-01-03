@@ -14,13 +14,13 @@ inline unique_ptr<BigInteger> State::do_calculate()
 {
     //保存第二个操作数
     unique_ptr<BigInteger> b(window->getNum ());
-    //运算结果
-    BigInteger *res=new BigInteger(funs[window->operation]
-            (*(window->last_output),*b));
+    //运算结果，除数为0时将抛出异常，智能指针保证被正确释放
+    unique_ptr<BigInteger> res(new BigInteger(funs[window->operation]
+            (*(window->last_output),*b)));
     //更新显示
     window->reset_last_output_text (QString((toString (*(window->last_output))
-                                            +operationChar[window->operation]+
-                                    toString(*b)).c_str ()));
+                                             +operationChar[window->operation]+
+                                            toString(*b)).c_str ()));
     window->reset_this_output_text (QString(toString (*res).c_str ()));
     //更新数据
     window->last_output.reset (res);
@@ -356,8 +356,18 @@ void enter_last_number::press_C ()
 
 void enter_last_number::press_equal ()
 {
+    //除数为0时保证程序正常运行
+    try
+    {
     window->state.reset(new after_equal(window,
                                         State::do_calculate ()));
+    }
+    catch(logic_error)
+    {
+        window->reset_last_output_text ("除数为0！");
+        window->reset_this_output_text ("0");
+        window->state.reset(new when_start(window));
+    }
 }
 
 void enter_last_number::press_get (int n)
@@ -370,19 +380,28 @@ void enter_last_number::press_get (int n)
 //在输入第二个运算数时若直接按下运算符则将计算结果作为下次运算的第一个运算数
 void enter_last_number::press_operation (OperatorType a)
 {
-    //运算上个结果
-    BigInteger *res=new BigInteger(funs[window->operation]
-            (*(window->last_output),*(window->getNum ())));
-    //更新数据
-    window->setRes (res);
-    window->last_output.reset (res);
-    window->operation=a;
-    //更新输出
-    window->reset_last_output_text (QString((
-                                        toString (*res) + operationChar[a]).c_str ()));
-    window->reset_this_output_text ("");
-    //更新状态
-    window->state.reset (new last_start(window));
+    try
+    {
+        //运算上个结果
+        unique_ptr<BigInteger> res(new BigInteger(funs[window->operation]
+                (*(window->last_output),*(window->getNum ()))));
+        //更新数据
+        window->setRes (res);
+        window->last_output.reset (res);
+        window->operation=a;
+        //更新输出
+        window->reset_last_output_text (QString((
+                                                    toString (*res) + operationChar[a]).c_str ()));
+        window->reset_this_output_text ("");
+        //更新状态
+        window->state.reset (new last_start(window));
+    }
+    catch(logic_error)
+    {
+        window->reset_last_output_text ("除数为0！");
+        window->reset_this_output_text ("0");
+        window->state.reset(new when_start(window));
+    }
 }
 
 void enter_last_number::press_res ()
@@ -421,8 +440,18 @@ void enter_equal::press_C ()
 
 void enter_equal::press_equal ()
 {
+    //除数为0时保证程序正常运行
+    try
+    {
     window->state.reset(new after_equal(window,
                                         State::do_calculate ()));
+    }
+    catch(logic_error)
+    {
+        window->reset_last_output_text ("除数为0！");
+        window->reset_this_output_text ("0");
+        window->state.reset(new when_start(window));
+    }
 }
 
 void enter_equal::press_get (int n)
@@ -472,18 +501,27 @@ void after_equal::press_C ()
 
 void after_equal::press_equal ()
 {
-    //重复上次运算
-    BigInteger *res=new BigInteger(funs[window->operation]
-            (*(window->last_output),*last_number));
-    //更新输出
-    window->reset_last_output_text (QString((toString (*(window->last_output))
-                                            +operationChar[window->operation]+
-                                    toString(*last_number)).c_str ()));
-    window->reset_this_output_text (QString(toString(*res).c_str ()));
-    //更新数据
-    window->setRes (res);
-    window->last_output.reset (res);
-    //有可能重复按下等号，不更新状态
+    try
+    {
+        //重复上次运算
+        unique_ptr<BigInteger> res(new BigInteger(funs[window->operation]
+                                   (*(window->last_output),*last_number)));
+        //更新输出
+        window->reset_last_output_text (QString((toString (*(window->last_output))
+                                                 +operationChar[window->operation]+
+                                                toString(*last_number)).c_str ()));
+        window->reset_this_output_text (QString(toString(*res).c_str ()));
+        //更新数据
+        window->setRes (res);
+        window->last_output.reset (res);
+        //有可能重复按下等号，不更新状态
+    }
+    catch(logic_error)
+    {
+        window->reset_last_output_text ("除数为0！");
+        window->reset_this_output_text ("0");
+        window->state.reset(new when_start(window));
+    }
 }
 
 void after_equal::press_get (int n)
