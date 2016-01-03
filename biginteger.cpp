@@ -468,9 +468,7 @@ BigInteger operator / (const BigInteger& a, const BigInteger& b)
 
 	if (b.vec.size() == 1 && b.vec[0] == 0)
 	{
-		BigInteger err("error");
-
-		return err;
+		throw logic_error("error");
 	}
 
 	i = a.vec.size() - b.vec.size();
