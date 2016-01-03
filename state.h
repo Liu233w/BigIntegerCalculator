@@ -10,11 +10,11 @@
 using namespace std;
 
 //所有的运算操作
-const function<BigInteger (BigInteger&,BigInteger&)>
-    funs [4] = { [](BigInteger& a,BigInteger& b){return a+b;} ,
-                        [](BigInteger& a,BigInteger& b){return a-b;} ,
-                        [](BigInteger& a,BigInteger& b){return a*b;} ,
-                        [](BigInteger& a,BigInteger& b){return a/b;}
+const function<BigInteger (const BigInteger&,const BigInteger&)>
+    funs [4] = { [](const BigInteger& a,const BigInteger& b){return a+b;} ,
+                        [](const BigInteger& a,const BigInteger& b){return a-b;} ,
+                        [](const BigInteger& a,const BigInteger& b){return a*b;} ,
+                        [](const BigInteger& a,const BigInteger& b){return a/b;}
 };
 
 //表示运算操作的枚举
