@@ -23,8 +23,8 @@ inline unique_ptr<BigInteger> State::do_calculate()
                                             toString(*b)).c_str ()));
     window->reset_this_output_text (QString(toString (*res).c_str ()));
     //更新数据
-    window->last_output.reset (res);
-    window->setRes (res);
+    window->setRes (res.get ());
+    window->last_output.reset (res.release ());
 
     return b;
 }
@@ -385,14 +385,14 @@ void enter_last_number::press_operation (OperatorType a)
         //运算上个结果
         unique_ptr<BigInteger> res(new BigInteger(funs[window->operation]
                 (*(window->last_output),*(window->getNum ()))));
-        //更新数据
-        window->setRes (res);
-        window->last_output.reset (res);
-        window->operation=a;
         //更新输出
         window->reset_last_output_text (QString((
                                                     toString (*res) + operationChar[a]).c_str ()));
         window->reset_this_output_text ("");
+        //更新数据
+        window->setRes (res.get ());
+        window->last_output.reset (res.release ());
+        window->operation=a;
         //更新状态
         window->state.reset (new last_start(window));
     }
@@ -512,8 +512,8 @@ void after_equal::press_equal ()
                                                 toString(*last_number)).c_str ()));
         window->reset_this_output_text (QString(toString(*res).c_str ()));
         //更新数据
-        window->setRes (res);
-        window->last_output.reset (res);
+        window->setRes (res.get ());
+        window->last_output.reset (res.release ());
         //有可能重复按下等号，不更新状态
     }
     catch(logic_error)
