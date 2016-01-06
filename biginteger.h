@@ -12,9 +12,9 @@ using namespace std;
 class BigInteger
 {
 public:
-
+	//储存数据
 	vector<int> vec;
-
+	//判断正负
 	bool negative;
 
 	// 构造函数 /////////////////////////////////
@@ -39,7 +39,7 @@ public:
 
 	friend int SizeJudge(BigInteger a, BigInteger b);
 };
-
+//友元函数的外部声明
 BigInteger operator + (const BigInteger& a,const BigInteger& b);
 BigInteger operator - (const BigInteger& a,const BigInteger& b);
 BigInteger operator * (const BigInteger& a,const BigInteger& b);
