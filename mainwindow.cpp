@@ -40,7 +40,7 @@ void styleButton(QPushButton* pushButton,QString str,ButtonSize bs)
     int pixelSize = (f.pointSizeF() * screen->logicalDotsPerInch()) / 72;
     if(pixelSize<0) //无法获取像素点大小（f.pointSize返回0）
     {//说明程序运行在android手机上
-        int minsize=min(screenSize.width ()/8,screenSize.height ()/8);
+        int minsize=min(screenSize.width ()/7,screenSize.height ()/8);
         QSize baseSize(minsize*ButtonWidth[bs],minsize*ButtonHight[bs]);
         pushButton->setFixedSize (baseSize);
     }
@@ -121,6 +121,26 @@ inline void setBroser(QTextBrowser *it)
                 "border-radius:4px;"
                 "}"
                 );
+
+    //设置输入框大小
+    QScreen *screen = qApp->primaryScreen();
+    QSize screenSize = screen->size();
+    QFont f = qApp->font();
+    int pixelSize = (f.pointSizeF() * screen->logicalDotsPerInch()) / 72;
+    if(pixelSize<0) //无法获取像素点大小（f.pointSize返回0）
+    {//说明程序运行在android手机上
+        QSize baseSize(screenSize.width (),screenSize.height ()/5);
+        it->setMaximumSize (baseSize);
+    }
+    else
+    {
+        QSize buttonSize(550,550);
+        if(screenSize.width() > 2000) //大分辨率屏幕，如surface
+        {
+                buttonSize *= (pixelSize / 10.0);
+        }
+        it->setMaximumSize (buttonSize);
+    }
 }
 
 //构造函数
