@@ -5,6 +5,7 @@
 #include <QScrollBar>
 #include <string>
 #include <QGraphicsOpacityEffect>
+#include <cmath>
 
 //给组件增加阴影效果，提高立体感
 inline void setShadow(QWidget *it)
@@ -18,7 +19,7 @@ inline void setShadow(QWidget *it)
 }
 
 //设置按钮效果
-inline void styleButton(QPushButton* pushButton,QString str)
+void styleButton(QPushButton* pushButton,QString str,ButtonSize bs)
 {
     static const QString back_name="_pressed";
     static const QString ext_name=".png";
@@ -31,6 +32,28 @@ inline void styleButton(QPushButton* pushButton,QString str)
                                +str+back_name+ext_name+");}");
 
     setShadow (pushButton);
+
+    //根据屏幕大小设定图标大小
+    QScreen *screen = qApp->primaryScreen();
+    QSize screenSize = screen->size();
+    QFont f = qApp->font();
+    int pixelSize = (f.pointSizeF() * screen->logicalDotsPerInch()) / 72;
+    if(pixelSize<0) //无法获取像素点大小（f.pointSize返回0）
+    {//说明程序运行在android手机上
+        int minsize=min(screenSize.width ()/8,screenSize.height ()/8);
+        QSize baseSize(minsize*ButtonWidth[bs],minsize*ButtonHight[bs]);
+        pushButton->setFixedSize (baseSize);
+    }
+    else
+    {
+        QSize buttonSize(static_cast<int>(40.0*ButtonWidth[bs]),
+                         static_cast<int>(40.0*ButtonHight[bs]));
+        if(screenSize.width() > 2000) //大分辨率屏幕，如surface
+        {
+                buttonSize *= (pixelSize / 10.0);
+        }
+        pushButton->setFixedSize (buttonSize);
+    }
 }
 
 //设置输入框效果，包括浅色的阴影（搭配输入框背景图片的透明效果）
@@ -119,35 +142,35 @@ MainWindow::MainWindow(QWidget *parent) :
     setShadow (ui->label_2);
     setShadow (ui->label_3);
     setShadow (ui->label_4);
-    setShadow (ui->Get1);
-    setShadow (ui->Get2);
-    setShadow (ui->Get3);
-    setShadow (ui->Get4);
-    setShadow (ui->ButtonRes);
 
     //加载按钮资源，使用代码加载减小工程量
-    styleButton (ui->Button0,"0");
-    styleButton (ui->Button1,"1");
-    styleButton (ui->Button2,"2");
-    styleButton (ui->Button3,"3");
-    styleButton (ui->Button4,"4");
-    styleButton (ui->Button5,"5");
-    styleButton (ui->Button6,"6");
-    styleButton (ui->Button7,"7");
-    styleButton (ui->Button8,"8");
-    styleButton (ui->Button9,"9");
-    styleButton (ui->ButtonCE,"CE");
-    styleButton (ui->ButtonDivide,"divide");
-    styleButton (ui->ButtonPlus,"add");
-    styleButton (ui->ButtonMinus,"minus");
-    styleButton (ui->ButtonEqual,"equal");
-    styleButton (ui->ButtonTimes,"times");
-    styleButton (ui->Set1,"set");
-    styleButton (ui->Set2,"set");
-    styleButton (ui->Set3,"set");
-    styleButton (ui->Set4,"set");
-    styleButton(ui->ButtonC,"c");
-    styleButton (ui->ButtonWhatsThis,"question mark");
+    styleButton (ui->Button0,"0",ButtonSize::Mid);
+    styleButton (ui->Button1,"1",ButtonSize::Mid);
+    styleButton (ui->Button2,"2",ButtonSize::Mid);
+    styleButton (ui->Button3,"3",ButtonSize::Mid);
+    styleButton (ui->Button4,"4",ButtonSize::Mid);
+    styleButton (ui->Button5,"5",ButtonSize::Mid);
+    styleButton (ui->Button6,"6",ButtonSize::Mid);
+    styleButton (ui->Button7,"7",ButtonSize::Mid);
+    styleButton (ui->Button8,"8",ButtonSize::Mid);
+    styleButton (ui->Button9,"9",ButtonSize::Mid);
+    styleButton (ui->ButtonCE,"CE",ButtonSize::Mid);
+    styleButton (ui->ButtonDivide,"divide",ButtonSize::Mid);
+    styleButton (ui->ButtonPlus,"add",ButtonSize::Mid);
+    styleButton (ui->ButtonMinus,"minus",ButtonSize::Mid);
+    styleButton (ui->ButtonEqual,"equal",ButtonSize::Mid);
+    styleButton (ui->ButtonTimes,"times",ButtonSize::Mid);
+    styleButton (ui->Set1,"set",ButtonSize::Flat);
+    styleButton (ui->Set2,"set",ButtonSize::Flat);
+    styleButton (ui->Set3,"set",ButtonSize::Flat);
+    styleButton (ui->Set4,"set",ButtonSize::Flat);
+    styleButton (ui->Get1,"get_disabled",ButtonSize::Flat);
+    styleButton (ui->Get2,"get_disabled",ButtonSize::Flat);
+    styleButton (ui->Get3,"get_disabled",ButtonSize::Flat);
+    styleButton (ui->Get4,"get_disabled",ButtonSize::Flat);
+    styleButton (ui->ButtonRes,"res_disabled",ButtonSize::Flat);
+    styleButton(ui->ButtonC,"c",ButtonSize::Flat);
+    styleButton (ui->ButtonWhatsThis,"question mark",ButtonSize::Small);
 
     //初始化状态机
     state.reset(new when_start(this));
@@ -192,7 +215,7 @@ void MainWindow::setRes(const BigInteger * n)
     if(!res)
     {
         ui->ButtonRes->setEnabled (true);
-        styleButton (ui->ButtonRes,"res");
+        styleButton (ui->ButtonRes,"res",ButtonSize::Flat);
     }
     ui->ButtonRes->setToolTip (*s_res);
     this->res.reset (s_res);

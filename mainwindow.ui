@@ -13,12 +13,6 @@
     <height>373</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
   <property name="maximumSize">
    <size>
     <width>550</width>
@@ -41,8 +35,8 @@ border-image: url(:/other/material/back.jpg);
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QFormLayout" name="formLayout">
-    <item row="0" column="0" colspan="2">
-     <widget class="QTextBrowser" name="LastOutput">
+    <item row="1" column="0" colspan="2">
+     <widget class="QTextBrowser" name="ThisOutput">
       <property name="font">
        <font>
         <family>Adobe 黑体 Std R</family>
@@ -50,7 +44,7 @@ border-image: url(:/other/material/back.jpg);
        </font>
       </property>
       <property name="whatsThis">
-       <string>上个数字</string>
+       <string>输入显示</string>
       </property>
       <property name="styleSheet">
        <string notr="true">border-image: url(:/other/material/input.png);</string>
@@ -63,8 +57,14 @@ border-image: url(:/other/material/back.jpg);
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="2">
-     <widget class="QTextBrowser" name="ThisOutput">
+    <item row="0" column="0" colspan="2">
+     <widget class="QTextBrowser" name="LastOutput">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="font">
        <font>
         <family>Adobe 黑体 Std R</family>
@@ -72,7 +72,7 @@ border-image: url(:/other/material/back.jpg);
        </font>
       </property>
       <property name="whatsThis">
-       <string>输入显示</string>
+       <string>上个数字</string>
       </property>
       <property name="styleSheet">
        <string notr="true">border-image: url(:/other/material/input.png);</string>

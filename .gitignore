@@ -9,6 +9,7 @@
 *.so
 *.dll
 *.dylib
+*.obj
 
 # Qt-es
 
@@ -36,3 +37,4 @@ Makefile*
 
 #binarys
 *.exe
+app_process

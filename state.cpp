@@ -100,8 +100,8 @@ inline void State::press_set (int n)
     if(!button->isEnabled ())
     {
         button->setEnabled(true);
-        void styleButton(QPushButton* pushButton,QString str);
-        styleButton (button,"get");
+        void styleButton(QPushButton* pushButton,QString str,ButtonSize bs);
+        styleButton (button,"get",ButtonSize::Flat);
     }
     button->setToolTip (
                 window->ui->ThisOutput

@@ -6,11 +6,24 @@
 #include "state.h"
 #include <memory>
 #include <array>
+#include <QScreen>
 
 using namespace std;
 
 //存储变量的最大空间
 const size_t SAVES_MAX = 4;
+
+//按钮属性
+enum ButtonSize
+{
+    Mid=0, //方形按钮
+    Flat=1,  //扁按钮
+    Small=2  //小按钮
+};
+
+//不同属性的按钮对应的大小比例
+const double ButtonWidth[]={1.0,1.0,0.5};
+const double ButtonHight[]={1.0,0.75,0.5};
 
 namespace Ui {
 class MainWindow;
