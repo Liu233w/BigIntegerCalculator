@@ -487,7 +487,9 @@ void enter_equal::press_CE ()
 
 void after_equal::press_number (int n)
 {
-    window->reset_this_output_text ("");
+    //bugfix：如果不把this_output设置成0，下一步输入0作为第一个运算数的时候
+    //会引起崩溃（第一个运算数将会是空白，无法转换成BigInteger）
+    window->reset_this_output_text ("0");
     window->reset_last_output_text ("");
     window->state.reset(new when_start(window));
     window->state->press_number (n);
