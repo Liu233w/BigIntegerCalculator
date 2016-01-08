@@ -178,7 +178,7 @@ public:
 inline unique_ptr<BigInteger> toBigInteger(const std::string& s)
 {
     std::istringstream stin(s);
-    //返回智能指针，避免内存溢出
+    //返回智能指针，避免内存泄露
     unique_ptr<BigInteger> tem (new BigInteger);
     stin>>*tem;
     return tem;
