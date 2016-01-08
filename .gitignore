@@ -38,3 +38,4 @@ Makefile*
 #binarys
 *.exe
 app_process
+*.apk
