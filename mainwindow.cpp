@@ -49,7 +49,7 @@ void styleButton(QPushButton* pushButton,QString str,ButtonSize bs)
         QSize buttonSize(static_cast<int>(40.0*ButtonWidth[bs]),
                          static_cast<int>(40.0*ButtonHight[bs]));
         if(screenSize.width() > 2000) //大分辨率屏幕，如surface
-        {
+        {//解决大分辨率屏幕上按钮过小的问题
                 buttonSize *= (pixelSize / 10.0);
         }
         pushButton->setFixedSize (buttonSize);
@@ -121,26 +121,6 @@ inline void setBroser(QTextBrowser *it)
                 "border-radius:4px;"
                 "}"
                 );
-
-    //设置输入框大小
-    QScreen *screen = qApp->primaryScreen();
-    QSize screenSize = screen->size();
-    QFont f = qApp->font();
-    int pixelSize = (f.pointSizeF() * screen->logicalDotsPerInch()) / 72;
-    if(pixelSize<0) //无法获取像素点大小（f.pointSize返回0）
-    {//说明程序运行在android手机上
-        QSize baseSize(screenSize.width (),screenSize.height ()/5);
-        it->setMaximumSize (baseSize);
-    }
-    else
-    {
-        QSize buttonSize(550,550);
-        if(screenSize.width() > 2000) //大分辨率屏幕，如surface
-        {
-                buttonSize *= (pixelSize / 10.0);
-        }
-        it->setMaximumSize (buttonSize);
-    }
 }
 
 //构造函数
@@ -162,6 +142,27 @@ MainWindow::MainWindow(QWidget *parent) :
     setShadow (ui->label_2);
     setShadow (ui->label_3);
     setShadow (ui->label_4);
+
+    //通过设置主窗体最大大小设置输入框大小（用于高分辨率屏幕）
+    QScreen *screen = qApp->primaryScreen();
+    QSize screenSize = screen->size();
+    QFont f = qApp->font();
+    int pixelSize = (f.pointSizeF() * screen->logicalDotsPerInch()) / 72;
+    if(pixelSize<0) //无法获取像素点大小（f.pointSize返回0）
+    {//说明程序运行在android手机上
+        QSize baseSize(screenSize.width (),screenSize.height ()/5);
+        setMaximumSize (baseSize);
+    }
+    else
+    {
+        QSize baseSize(550,550);
+        if(screenSize.width() > 2000) //大分辨率屏幕，如surface
+        {
+                baseSize.rwidth ()*= (pixelSize / 10.0);
+                baseSize.rheight ()*= (pixelSize / 13.0);
+        }
+        setMaximumSize (baseSize);
+    }
 
     //加载按钮资源，使用代码加载减小工程量
     styleButton (ui->Button0,"0",ButtonSize::Mid);
